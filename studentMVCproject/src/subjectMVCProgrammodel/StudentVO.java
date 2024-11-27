@@ -122,8 +122,7 @@ public class StudentVO {
 		this.sdate = sdate;
 	}
 
-	@Override
-	public String toString() {
+	public String studentJoinList() {
 		return "[no=" + no + ", num=" + num + ", name=" + name + ", id=" + id + ", passwd=" + passwd + ", s_num="
 				+ s_num + ", birthday=" + birthday + ", phone=" + phone + ", address=" + address + ", email=" + email
 				+ ", sdate=" + sdate + "]";
