@@ -6,6 +6,7 @@
 # Compiled class file or Properties
 *.class
 *.properties
+*.classpath
 
 # Log file
 *.log
