@@ -25,6 +25,20 @@ public class StudentRegisterManager {
 		}
 		printStudentList(studentList);
 	}
+	
+	public void selectNameManager() throws SQLException {
+		StudentDAO sDao = new StudentDAO();
+		ArrayList<StudentVO> studentList = new ArrayList<StudentVO>();
+		
+		System.out.print("학생 번호 등록 ( 학생 이름을 입력 해 주세요 ) : ");
+		String name = sc.nextLine();
+		studentList = sDao.studentNameSelect(name);
+		if (studentList == null) {
+			System.out.println("데이터가 존재하지 않습니다.");
+			return;
+		}
+		printStudentList(studentList);
+	}
 
 	public void insertManager() throws SQLException {
 

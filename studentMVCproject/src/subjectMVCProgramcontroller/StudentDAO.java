@@ -13,8 +13,8 @@ import subjectMVCProgrammodel.StudentJoin;
 import subjectMVCProgrammodel.StudentVO;
 
 public class StudentDAO {
-
 	public static final String STUDENT_SELECT = "SELECT * FROM STUDENT";
+	public static final String STUDENT_SELECT_SEARCH = "SELECT NUM, NAME, EMAIL FROM STUDENT WHERE NAME = ?";
 	public static final String STUDENT_JOIN_SELECT = "SELECT ST.NO, ST.NUM, ST.NAME, ID, PASSWD, S_NUM, SJ.NAME AS S_NAME, BIRTHDAY, PHONE, ADDRESS, EMAIL, SDATE FROM STUDENT ST INNER JOIN SUBJECT SJ ON st.s_num = sj.num";
 	public static final String STUDENT_INSERT = "INSERT INTO STUDENT VALUES(STUDENT_SEQ.NEXTVAL, ?, ?, ? ,?, ?, ?, ?, ?, ? ,SYSDATE)";
 	public static final String STUDENT_CALL_RANK_PROC = "{call STUDENT_RANK_PROC()}";
@@ -59,6 +59,42 @@ public class StudentDAO {
 			System.out.println(e.toString());
 		} finally {
 			DBUtility.dbClose(con, stmt, rs);
+		}
+		return studentList;
+	}
+
+	public static ArrayList<StudentVO> studentNameSelect(String nameValue) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<StudentVO> studentList = new ArrayList<StudentVO>();
+
+		con = DBUtility.dbCon();
+		try {
+			pstmt = con.prepareStatement(STUDENT_SELECT_SEARCH);
+			pstmt.setString(1, nameValue);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				do {
+					String num = rs.getString("NUM");
+					String name = rs.getString("NAME");
+					String email = rs.getString("EMAIL");
+
+					StudentVO stu = new StudentVO();
+					stu.setNum(num);
+					stu.setName(name);
+					stu.setEmail(email);
+
+					studentList.add(stu);
+				} while (rs.next());
+			} else {
+				studentList = null;
+			}
+		} catch (SQLException e) {
+			System.out.println(e.toString());
+		} finally {
+			DBUtility.dbClose(con, pstmt, rs);
 		}
 		return studentList;
 	}

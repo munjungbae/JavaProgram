@@ -3,23 +3,76 @@ package subjectMVCProgrammodel;
 import java.sql.Date;
 
 public class TraineeVO {
+	// T.NO, T.SECTION, S.NUM, S.NAME, L.ABBRE, L.NAME
 	private int no; // --pk seq
 	private String s_num; // --student(fk) 학생번호
 	private String abbre; // --lesson(fk) 과목요약
 	private String section; // --전공,부전공,교양
 	private Date registDate; // --수강신청일
+	// Student join
+	private String s_name;
+	// lesson join
+	private String l_name;
 
 	public TraineeVO() {
 		super();
 	}
+	
+	
+	public TraineeVO(int no, String s_num, String abbre, String section, Date registDate) {
+		super();
+		this.no = no;
+		this.s_num = s_num;
+		this.abbre = abbre;
+		this.section = section;
+		this.registDate = registDate;
+	}
+	
+	public TraineeVO(int no, String abbre, String s_name) {
+		super();
+		this.no = no;
+		this.abbre = abbre;
+		this.s_name = s_name;
+	}
 
+
+
+	//join명령어를 나타내기 위한 생성자
+	public TraineeVO(int no, String s_num, String abbre, String section, Date registDate, String s_name,
+			String l_name) {
+		super();
+		this.no = no;
+		this.s_num = s_num;
+		this.abbre = abbre;
+		this.section = section;
+		this.registDate = registDate;
+		this.s_name = s_name;
+		this.l_name = l_name;
+	}
+
+	
+	
 	public TraineeVO(String s_num, String abbre, String section) {
 		super();
 		this.s_num = s_num;
 		this.abbre = abbre;
 		this.section = section;
 	}
-
+	
+	
+	
+	public String getS_name() {
+		return s_name;
+	}
+	public void setS_name(String s_name) {
+		this.s_name = s_name;
+	}
+	public String getL_name() {
+		return l_name;
+	}
+	public void setL_name(String l_name) {
+		this.l_name = l_name;
+	}
 	public int getNo() {
 		return no;
 	}

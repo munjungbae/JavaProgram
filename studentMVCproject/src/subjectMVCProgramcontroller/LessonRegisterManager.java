@@ -106,7 +106,7 @@ public class LessonRegisterManager {
 		boolean successFlag = ldao.lessonDelete(lvo);
 
 		if (successFlag == true) {
-			System.out.println(no + "번호 삭제 완료 되었습니다.");
+			System.out.println(no + "번 삭제 완료 되었습니다.");
 		} else {
 			System.out.println("삭제 실패했습니다. ");
 		}

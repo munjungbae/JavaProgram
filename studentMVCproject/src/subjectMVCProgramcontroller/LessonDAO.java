@@ -78,12 +78,19 @@ public class LessonDAO {
 
 		try {
 			con = DBUtility.dbCon();
+			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(LESSON_DELETE);
 			pstmt.setInt(1, lvo.getNo());
 			int count = pstmt.executeUpdate();
 
-			successFlag = (count != 0) ? true : false;
-
+			if (count != 0) {
+				con.commit();
+				successFlag = true;
+			} else { 
+				System.out.println("오라클서 오류가 발생하였습니다");
+				con.rollback();
+				successFlag = false;
+			}
 		} catch (SQLException e) {
 			System.out.println(e.toString());
 		} finally {
@@ -96,7 +103,6 @@ public class LessonDAO {
 	public boolean lessonUpdate(LessonVO lvo) {
 		Connection con = null; // 오라클 접속 관문
 		PreparedStatement pstmt = null; // 오라클에서 작업 할 쿼리문을 사용할 수 있는 명령문 // 오라클에서 결과물을 받는 객체
-		ArrayList<LessonVO> lessonList = new ArrayList<LessonVO>(); // 결과값을 다른 객체에 전달하기 위해 사용하는 객체
 
 		boolean successFlag = false;
 
@@ -130,7 +136,7 @@ public class LessonDAO {
 			pstmt = con.prepareStatement(LESSON_INSERT);
 			pstmt.setString(1, lvo.getAbbre());
 			pstmt.setString(2, lvo.getName());
-			
+
 			int count = pstmt.executeUpdate();
 
 			successFlag = (count != 0) ? true : false;
@@ -143,19 +149,4 @@ public class LessonDAO {
 		return successFlag;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

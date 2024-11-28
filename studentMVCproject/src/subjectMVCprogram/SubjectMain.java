@@ -49,7 +49,7 @@ public class SubjectMain {
 		}//end of file
 	}
 	//수강신청정보
-	private static void traineeMenu() {
+	private static void traineeMenu() throws SQLException {
 		int no;
 		TraineeRegisterManager trm = new TraineeRegisterManager();  
 
@@ -71,6 +71,10 @@ public class SubjectMain {
 		case TRAINEE_CHOICE.DELETE:
 			System.out.println("");
 //			studnetManager.studnetTotalList();
+			break;
+		case TRAINEE_CHOICE.JOIN_LIST:
+			System.out.println("");
+			trm.totalSelectManager();
 			break;
 		case TRAINEE_CHOICE.MAIN:
 			return;

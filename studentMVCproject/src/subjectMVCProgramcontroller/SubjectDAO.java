@@ -11,7 +11,7 @@ import subjectMVCProgrammodel.SubjectVO;
 
 
 public class SubjectDAO {
-		
+
 	public static final String SUBJECT_SELECT = "SELECT * FROM SUBJECT";
     public static final String SUBJECT_INSERT = "insert into subject(no, num, name) values(subject_seq.nextval, ?, ?)";
     public static final String SUBJECT_CALL_RANK_PROC = "{call STUDENT_RANK_PROC()}";
