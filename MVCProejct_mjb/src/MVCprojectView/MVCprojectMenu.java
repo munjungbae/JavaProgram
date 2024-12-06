@@ -88,7 +88,7 @@ public class MVCprojectMenu {
 	
 	public static void InfoMenuView() {
 		System.out.println();
-		System.out.println("===== 정보통신학과 ==============================================================");
+		System.out.println("===== 정보통신학과 =============================================================");
 		System.out.println();
 		System.out.print(String.format("%-5s", ""));
 		System.out.print(String.format("%-15s", "1. 수강 과목 목록"));

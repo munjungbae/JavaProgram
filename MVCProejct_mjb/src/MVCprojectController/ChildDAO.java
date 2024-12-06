@@ -12,7 +12,7 @@ import MVCprojectModel.ChildVO;
 import MVCprojectModel.MajorVO;
 
 public class ChildDAO {
-	public static final String CHILD_SELECT = "SELECT M.MNUM AS NUM, M.NAME AS MAJOR, NO, C.NAME, GRADE FROM CHILD C INNER JOIN MAJOR M ON C.MNUM = M.MNUM";
+	public static final String CHILD_SELECT = "SELECT M.MNUM AS NUM, M.NAME AS MAJOR, NO, C.NAME, GRADE FROM CHILD C INNER JOIN MAJOR M ON C.MNUM = M.MNUM ORDER BY NO ASC";
 	public static final String CHILD_INSERT = "INSERT INTO CHILD VALUES(CHILD_SEQ.NEXTVAL, ?, ?, ?)";
 	public static final String CHILD_DELETE = "DELETE FROM CHILD WHERE NO = ?";
 

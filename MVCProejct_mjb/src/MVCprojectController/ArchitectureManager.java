@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import MVCprojectModel.ArchitectureVO;
+import MVCprojectModel.ImfomationVO;
 import MVCprojectModel.MajorVO;
 
 public class ArchitectureManager {
@@ -25,7 +26,6 @@ public class ArchitectureManager {
 
 		ArchitectureDAO archiDao = new ArchitectureDAO();
 
-		System.out.println();
 		System.out.println("건축공학과 전공 번호 : 03");
 		System.out.print("해당 과목 전공 번호를 입력 해 주세요 : ");
 		String num = sc.nextLine();
@@ -39,17 +39,20 @@ public class ArchitectureManager {
 		boolean successFlag = archiDao.architectureInsert(archiVo);
 
 		if (successFlag == false) {
+			System.out.println();
 			System.out.println("입력 실패");
 			return;
 		} else {
 			System.out.println("입력이 완료 되었습니다.");
 			System.out.println("입력된 정보");
-			System.out.println("=====================================================================");
+			System.out.println();
+			System.out.println("=============================================================================");
 			System.out.println();
 			System.out.println(archiVo.print());
-			System.out.println("=====================================================================");
+			System.out.println("=============================================================================");
 		}
 	}
+	
 
 	// 삭제
 	public static void archiDeleteManager() throws SQLException {
@@ -62,7 +65,7 @@ public class ArchitectureManager {
 			return;
 		}
 		printarchiList(archiList);
-
+		System.out.println();
 		System.out.print("삭제하고자 하는 과목의 번호를 입력하세요: ");
 		int no = Integer.parseInt(sc.nextLine());
 
@@ -72,18 +75,20 @@ public class ArchitectureManager {
 		boolean successFlag = archiDao.architectureDelete(archiVo);
 
 		if (successFlag == false) {
+			System.out.println();
 			System.out.println("삭제 실패. ");
 		} else {
+			System.out.println();
 			System.out.println("삭제 성공했습니다. ");
 		}
 	}
 
 	public static void printarchiList(ArrayList<ArchitectureVO> archiList) {
-		System.out.println("=====================================================================================================");
+		System.out.println("=============================================================================");
 		System.out.println();
 		for (ArchitectureVO archiVO : archiList) {
 			System.out.println(archiVO.toString());
 		}
-		System.out.println("=====================================================================================================");
+		System.out.println("=============================================================================");
 	}
 }

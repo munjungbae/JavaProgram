@@ -12,9 +12,9 @@ import MVCprojectModel.DBU;
 import MVCprojectModel.StudentVO;
 
 public class StudentDAO {
-	public static final String STUDENT_SELECT = "SELECT NO, S.NAME, YEAR, GRADE, BIRTH, PHONE, S.MNUM, M.NAME AS MAJOR FROM STUDENT2 S INNER JOIN MAJOR M ON S.MNUM = M.MNUM";
+	public static final String STUDENT_SELECT = "SELECT NO, S.NAME, YEAR, GRADE, BIRTH, PHONE, S.MNUM, M.NAME AS MAJOR FROM STUDENT2 S INNER JOIN MAJOR M ON S.MNUM = M.MNUM ORDER BY NO ASC";
 	public static final String STUDENT_INSERT = "INSERT INTO STUDENT2 VALUES(STUDENT2_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?)";
-	public static final String STUDENT_UPDATE = "UPDATE STUDENT2 SET NAME = ?, YEAR = ?, GRADE = ?, BIRTH = ?, PHONE = ?, MNUM = ? WHERE NO = ? ";
+	public static final String STUDENT_UPDATE = "UPDATE STUDENT2 SET NAME = ?, YEAR = ?, GRADE = ?, BIRTH = ?, PHONE = ? WHERE NO = ? ";
 	public static final String STUDENT_DELETE = "DELETE FROM STUDENT2 WHERE NO = ?";
 	
 	public ArrayList<StudentVO> studentSelect() {
@@ -79,7 +79,6 @@ public class StudentDAO {
 	public boolean studentUpdate(StudentVO sVo) throws SQLException {
 		boolean successFlag = false;
 		Connection con = null;
-		CallableStatement cstmt = null;
 		PreparedStatement pstmt = null;
 		
 		con = DBU.dbCon();
@@ -90,17 +89,14 @@ public class StudentDAO {
 		pstmt.setInt(3, sVo.getGrade());
 		pstmt.setString(4, sVo.getBirth());
 		pstmt.setString(5, sVo.getPhone());
-		pstmt.setString(6, sVo.getmNum());
-		pstmt.setInt(7, sVo.getNo());
+		pstmt.setInt(6, sVo.getNo());
 
-		int result1 = pstmt.executeUpdate();
+		int result = pstmt.executeUpdate();
 		
-		cstmt = con.prepareCall("protocol line");
-		int result2 = cstmt.executeUpdate();
 
-		successFlag = (result1 != 0 && result2 != 0) ? true : false;
+		successFlag = (result != 0) ? true : false;
 		
-		DBU.dbClose(con, pstmt, cstmt);
+		DBU.dbClose(con, pstmt);
 		
 		return successFlag;
 	}

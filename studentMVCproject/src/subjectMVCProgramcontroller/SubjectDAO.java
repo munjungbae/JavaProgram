@@ -120,5 +120,8 @@ public class SubjectDAO {
 		return subjectList; 
 	}
 
+	public static void main(String[] args) {
+	}
+
 
 }

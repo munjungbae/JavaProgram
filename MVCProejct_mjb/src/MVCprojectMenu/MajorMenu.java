@@ -43,11 +43,13 @@ public class MajorMenu {
 				case MVCprojectListMenu.MENU:
 					System.out.println();
 					System.out.println("메인화면으로 돌아갑니다.");
+					System.out.println();
 					exitFlag = true;
 					break;
 				default:
 					System.out.println();
 					System.out.println("해당 메뉴 번호만 입력하세요.");
+					System.out.println();
 				}
 			} catch (Exception e) {
 				System.out.println();
@@ -82,11 +84,13 @@ public class MajorMenu {
 				case MVCprojectClassMenu.MENU:
 					System.out.println();
 					System.out.println("메인화면으로 돌아갑니다.");
+					System.out.println();
 					classFlag = true;
 					break;
 				default:
 					System.out.println();
 					System.out.println("해당 메뉴 번호만 입력하세요.");
+					System.out.println();
 				}
 			} catch (Exception e) {
 				System.out.println();
@@ -104,22 +108,27 @@ public class MajorMenu {
 				int num = Integer.parseInt(sc.nextLine());
 				switch (num) {
 				case MVCprojectClassMenu.LIST:
+					System.out.println();
 					ImfomationManager.showList();
 					break;
 				case MVCprojectClassMenu.INSERT:
+					System.out.println();
 					ImfomationManager.infoInsertManager();
 					break;
 				case MVCprojectClassMenu.DELETE:
+					System.out.println();
 					ImfomationManager.infoDeleteManager();
 					break;
 				case MVCprojectClassMenu.MENU:
 					System.out.println();
 					System.out.println("메인화면으로 돌아갑니다.");
+					System.out.println();
 					infoFlag = true;
 					break;
 				default:
 					System.out.println();
 					System.out.println("해당 메뉴 번호만 입력하세요.");
+					System.out.println();
 				}
 			} catch (Exception e) {
 				System.out.println();
@@ -137,22 +146,27 @@ public class MajorMenu {
 				int num = Integer.parseInt(sc.nextLine());
 				switch (num) {
 				case MVCprojectClassMenu.LIST:
+					System.out.println();
 					ArchitectureManager.showList();
 					break;
 				case MVCprojectClassMenu.INSERT:
+					System.out.println();
 					ArchitectureManager.archiInsertManager();;
 					break;
 				case MVCprojectClassMenu.DELETE:
+					System.out.println();
 					ArchitectureManager.archiDeleteManager();
 					break;
 				case MVCprojectClassMenu.MENU:
 					System.out.println();
 					System.out.println("메인화면으로 돌아갑니다.");
+					System.out.println();
 					archiFlag = true;
 					break;
 				default:
 					System.out.println();
 					System.out.println("해당 메뉴 번호만 입력하세요.");
+					System.out.println();
 				}
 			} catch (Exception e) {
 				System.out.println();
@@ -170,22 +184,27 @@ public class MajorMenu {
 				int num = Integer.parseInt(sc.nextLine());
 				switch (num) {
 				case MVCprojectClassMenu.LIST:
+					System.out.println();
 					ChildManager.showList();
 					break;
 				case MVCprojectClassMenu.INSERT:
+					System.out.println();
 					ChildManager.childInsertManager();
 					break;
 				case MVCprojectClassMenu.DELETE:
+					System.out.println();
 					ChildManager.childDeleteManager();
 					break;
 				case MVCprojectClassMenu.MENU:
 					System.out.println();
 					System.out.println("메인화면으로 돌아갑니다.");
+					System.out.println();
 					childFlag = true;
 					break;
 				default:
 					System.out.println();
 					System.out.println("해당 메뉴 번호만 입력하세요.");
+					System.out.println();
 				}
 			} catch (Exception e) {
 				System.out.println();

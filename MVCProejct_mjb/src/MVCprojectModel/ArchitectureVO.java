@@ -82,20 +82,21 @@ public class ArchitectureVO {
 		this.grade = grade;
 	}
 
+	@Override
 	public String toString() {
 		return String.format("%-2s", "")+
-				String.format("%7s", "전공번호 : ") + String.format("%-5s", mNum) +
-			   String.format("%7s", "전공명 : ") + String.format("%-5s", mName)  +
-			   String.format("%7s", "과목명 : ") + String.format("%-15s", iName)  +
-			   String.format("%7s", "학점 : ") + String.format("%-5s", grade) +
-			   String.format("%7s", "과목번호 : ") + String.format("%-5s", no)+"\n";
+			   String.format("%10s", "전공번호 : ") + String.format("%-5s", mNum) +
+			   String.format("%10s", "전공명 : ") + String.format("%-5s", mName)  +
+			   String.format("%10s", "과목명 : ") + String.format("%-15s", iName)+"\n"  +
+			   String.format("%10s", "학점 : ") + String.format("%-9s", grade) +
+			   String.format("%10s", "과목번호 : ") + String.format("%-5s", no)+"\n";
 	}
 
 	public String print() {
 		return String.format("%-2s", "")+
-				String.format("%7s", "전공번호 : ") + String.format("%-5s", mNum) +
-				String.format("%7s", "과목명 : ") + String.format("%-15s", iName) +
-				String.format("%7s", "학점 : ")+ String.format("%-5s", no)+"\n";
+				String.format("%10s", "전공번호 : ") + String.format("%-5s", mNum) +
+				String.format("%10s", "과목명 : ") + String.format("%-15s", iName) +
+				String.format("%10s", "학점 : ")+ String.format("%-5s", no)+"\n";
 	}
 
 }

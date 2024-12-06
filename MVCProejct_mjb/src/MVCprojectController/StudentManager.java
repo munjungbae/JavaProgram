@@ -60,21 +60,28 @@ public class StudentManager {
 			System.out.println("입력 실패");
 			return;
 		} else {
+			System.out.println();
 			System.out.println("입력이 완료 되었습니다.");
 			System.out.println("입력된 정보");
-			System.out.println("====================================================================================================================================");
+			System.out.println();
+			System.out.println("=============================================================================");
 			System.out.println();
 			System.out.println(sVo.print());
-			System.out.println();
-			System.out.println("====================================================================================================================================");
+			System.out.println("=============================================================================");
 		}
 	}
 	//수정
 	public static void studentUpdateManager() throws SQLException {
-
+		
+		ArrayList<StudentVO> studentList = new ArrayList<StudentVO>();
 		StudentDAO sDao = new StudentDAO();
-
-
+		studentList = sDao.studentSelect();
+		if (studentList == null) {
+			System.out.println("데이터가 존재하지 않습니다");
+			return;
+		}
+		printStudentList(studentList);
+		System.out.println();
 		System.out.print("학생의 학번을 입력 해 주세요: ");
 		int no = Integer.parseInt(sc.nextLine());
 		System.out.print("이름을 입력 해 주세요 : ");
@@ -88,26 +95,37 @@ public class StudentManager {
 		System.out.print("전화번호를 입력 해 주세요: ");
 		String phone = sc.nextLine();
 
-		StudentVO sVo = new StudentVO (name, year, grade, birth, phone);
+		StudentVO sVo = new StudentVO (no, name, year, grade, birth, phone);
 
 		boolean successFlag = sDao.studentUpdate(sVo);
 
 		if (successFlag == true) {
+			System.out.println();
 			System.out.println("정보 수정에 성공하였습니다 ");
+			System.out.println();
 			System.out.print("수정된 정보");
-			System.out.println("====================================================================================================================================");
 			System.out.println();
-			System.out.println(sVo.print());
 			System.out.println();
-			System.out.println("====================================================================================================================================");
+			System.out.println("=============================================================================");
+			System.out.println();
+			System.out.println(sVo.updatePrint());
+			System.out.println("=============================================================================");
 		} else {
 			System.out.println("수정 실패 ");
 		}
 	}
 	//삭제
 	public static void studentDeleteManager() throws SQLException {
+		
+		ArrayList<StudentVO> studentList = new ArrayList<StudentVO>();
 		StudentDAO sDao = new StudentDAO();
-
+		studentList = sDao.studentSelect();
+		if (studentList == null) {
+			System.out.println("데이터가 존재하지 않습니다");
+			return;
+		}
+		printStudentList(studentList);
+		System.out.println();
 		System.out.print("삭제하고자 하는 학생의 번호를 입력하세요: ");
 		int no = Integer.parseInt(sc.nextLine());
 
@@ -117,18 +135,20 @@ public class StudentManager {
 		boolean successFlag = sDao.studentDelete(sVo);
 
 		if (successFlag == true) {
+			System.out.println();
 			System.out.println("삭제 성공했습니다. ");
 		} else {
+			System.out.println();
 			System.out.println("삭제 실패 ");
 		}
 	}
 
 	public static void printStudentList(ArrayList<StudentVO> studentList) {
-		System.out.println("=================================================================================================================================================================");
+		System.out.println("=============================================================================");
 		System.out.println();
 		for (StudentVO svo : studentList) {
 			System.out.println(svo.toString());
 		}
-		System.out.println("=================================================================================================================================================================");
+		System.out.println("=============================================================================");
 	}
 }
